@@ -61,18 +61,20 @@ function displayStats() {
 }
 
 function displayMenu(hasPellets = true) {
+
+
   if(hasPellets){
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
   console.log('(p) Eat Power Pellet');
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+  console.log('(1) Eat Inky (' + isEdible(Inky.edible) + ')');
+  console.log('(2) Eat Blinky (' + isEdible(Blinky.edible) + ')');
+  console.log('(3) Eat Pinky (' + isEdible(Pinky.edible) + ')');
+  console.log('(4) Eat Clyde (' + isEdible(Clyde.edible) + ')');
   console.log('(q) Quit');
 }
 else {
-  console.log('\n\nSelect Option:\n');  // each \n creates a new line
+  console.log('\n\nSelect Option:\n');  // render new menu when out of power pellets
   console.log('(d) Eat Dot');
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blinky');
@@ -80,6 +82,21 @@ else {
   console.log('(4) Eat Clyde');
   console.log('(q) Quit');
 }
+}
+
+function isEdible(edible){
+  switch(edible){
+  case true:
+    return "edible";
+    break;
+  case false:
+  return "inedible";
+  break;
+  default:
+  return "mmmm"
+  break;
+}
+
 }
 
 function displayPrompt() {
@@ -98,21 +115,25 @@ function eatDot() {
 function eatInky() {
   console.log('\nChomp!');
   score += 5;
+  Inky.edible = false;
 }
 
 function eatBlinky() {
   console.log('\nChomp!');
   score += 5;
+  Blink.edible = false;
 }
 
 function eatPinky() {
   console.log('\nChomp!');
   score += 5;
+  Pinky.edible = false;
 }
 
 function eatClyde() {
   console.log('\nChomp!');
   score += 5;
+  Clyde.edible = false
 }
 
 function eatpowerPellet() {
