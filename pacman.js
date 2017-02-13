@@ -4,7 +4,7 @@ var lives = 2;
 
 
 // Define your ghosts here
-var inky = {
+var Inky = {
   menu_option: '1',
   name: 'Inky',
   colour: 'Red',
@@ -13,7 +13,7 @@ var inky = {
 };
 
 var Blinky = {
-  menu_option: '1',
+  menu_option: '2',
   name: 'Blinky',
   colour: 'Cyan',
   charater: 'Speedy',
@@ -21,7 +21,7 @@ var Blinky = {
 };
 
 var Pinky = {
-  menu_option: '1',
+  menu_option: '3',
   name: 'Pinky',
   colour: 'Pink',
   charater: 'Shadow',
@@ -29,13 +29,16 @@ var Pinky = {
 };
 
 var Clyde = {
-  menu_option: '1',
+  menu_option: '4',
   name: 'Clyde',
   colour: 'Orange',
   charater: 'Pokey',
   edible: false
 };
+
+
 // replace this comment with your four ghosts setup as objects
+var ghosts = [Inky, Blinky, Pinky, Clyde ]
 
 
 // Draw the screen functionality
@@ -59,6 +62,10 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(1) Eat Inky');
+  console.log('(2) Eat Blinky');
+  console.log('(3) Eat Pinky');
+  console.log('(4) Eat Clyde');
   console.log('(q) Quit');
 }
 
@@ -68,13 +75,43 @@ function displayPrompt() {
 }
 
 
+
 // Menu Options
 function eatDot() {
   console.log('\nChomp!');
   score += 10;
 }
 
+function eatInky() {
+  console.log('\nChomp!');
+  score += 5;
+}
 
+function eatBlinky() {
+  console.log('\nChomp!');
+  score += 5;
+}
+
+function eatPinky() {
+  console.log('\nChomp!');
+  score += 5;
+}
+
+function eatClyde() {
+  console.log('\nChomp!');
+  score += 5;
+}
+
+function eatGhosts(ghosts) {
+  if (!ghosts.edible) {
+    console.log('\nkilled by' + ghosts.name + ghosts.colour);
+  lives--;
+}
+else {
+    console.log('\nAte' + ghosts.name);
+    score += 5;
+  }
+}
 // Process Player's Input
 function processInput(key) {
   switch(key) {
@@ -84,6 +121,18 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case '1':
+      eatGhosts(ghosts[0]);
+      break;
+    case '2':
+      eatGhosts(ghosts[1]);
+      break;
+    case '3':
+      eatGhosts(ghosts[2]);
+      break;
+    case '4':
+      eatGhosts(ghosts[3]);
       break;
     default:
       console.log('\nInvalid Command!');
