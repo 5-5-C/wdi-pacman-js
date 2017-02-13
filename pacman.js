@@ -112,6 +112,17 @@ else {
     score += 5;
   }
 }
+
+function checkGameOver() {
+  if (lives < 0) {
+    process.exit()
+  console.log('\nYou lost');
+}
+}
+
+
+
+
 // Process Player's Input
 function processInput(key) {
   switch(key) {
@@ -137,6 +148,7 @@ function processInput(key) {
     default:
       console.log('\nInvalid Command!');
   }
+  checkGameOver();
 }
 
 
